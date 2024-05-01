@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import './Landing.scss';
@@ -11,11 +12,13 @@ const registerUrl = `${baseUrl}/users/register`;
 const loginUrl = `${baseUrl}/users/login`;
 
 export default function Landing() {
-  const token = sessionStorage.getItem('JWTtoken');
   const [showForm, setShowForm] = useState(false);
   // const [isLoggedIn, setIsLoggedIn] = useState(!!token);
   const [isLoginError, setIsLoginError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [userId, setUserId] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -39,11 +42,12 @@ export default function Landing() {
         password: e.target.password.value,
       });
 
+      setUserId(response.data.userId);
       sessionStorage.setItem('JWTtoken', response.data.Bearer);
 
-      // setIsLoggedIn(true);
       setIsLoginError(false);
       setErrorMessage('');
+      navigate(`/collection/${userId}`);
     } catch (error) {
       setIsLoginError(true);
       setErrorMessage(error.response.data.error.message);

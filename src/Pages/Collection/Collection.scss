@@ -1,0 +1,11 @@
+@use '../../Styles/mixin.scss' as *;
+
+.collection {
+  margin: 0 1rem;
+  &__heading {
+    @include setPageHeadingStyle;
+  }
+
+  &__search-box {
+  }
+}

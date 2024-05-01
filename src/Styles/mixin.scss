@@ -15,3 +15,12 @@
   font-size: 3rem;
   color: white;
 }
+
+@mixin setPageHeadingStyle {
+  padding-top: 2rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
+@mixin setCarCardStyle {
+}
