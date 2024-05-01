@@ -1,0 +1,17 @@
+// mobile first approach, therefore default styling is for mobile
+// only one additional styling set for tablet
+@use './variables' as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin setChevronStyle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 3rem;
+  color: white;
+}
