@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.scss";
-import Landing from "./Pages/Landing";
-import Collection from "./Pages/Collection";
-import AddCar from "./Pages/AddCar";
-import CarInfo from "./Pages/CarInfo";
-import JournalEvents from "./Pages/JournalEvents";
-import AddJournalEvent from "./Pages/AddJournalEvent";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.scss';
+import Landing from './Pages/Landing/Landing';
+import Collection from './Pages/Collection';
+import AddCar from './Pages/AddCar';
+import CarInfo from './Pages/CarInfo';
+import JournalEvents from './Pages/JournalEvents';
+import AddJournalEvent from './Pages/AddJournalEvent';
 
 function App() {
   return (
