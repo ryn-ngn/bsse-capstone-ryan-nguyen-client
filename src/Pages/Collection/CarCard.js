@@ -3,6 +3,7 @@ import { headerWithJWT } from '../../Utils/helper';
 import axios from 'axios';
 import './CarCard.scss';
 import { MdDeleteForever } from 'react-icons/md';
+import CarInfo from '../../Components/CarInfo/CarInfo';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const UNSPLASH_URL = 'https://api.unsplash.com/';
@@ -69,20 +70,6 @@ export default function CarCard({ carId }) {
   }
 
   return (
-    <div className="car-card" id={carId}>
-      <div className="car-card__img-ctn">
-        <img
-          src={carInfo.imageUrl}
-          alt={`unsplash search using ${carInfo.make} and ${carInfo.model}`}
-        ></img>
-      </div>
-      <div className="car-card__info-ctn">
-        <p>Year: {carInfo.year}</p>
-        <p>Make: {carInfo.make}</p>
-        <p>Model: {carInfo.model}</p>
-        <p>Transmission: {carInfo.trany}</p>
-      </div>
-      <MdDeleteForever className="car-card__delete-icon" />
-    </div>
+    <CarInfo className="collection-" carInfo={carInfo} deleteIconToggle={true} />
   );
 }

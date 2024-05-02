@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Landing from './Pages/Landing/Landing';
 import Collection from './Pages/Collection/Collection';
-import AddCar from './Pages/AddCar';
+import AddCar from './Pages/AddCar/AddCar';
 import CarInfo from './Pages/CarInfo';
 import JournalEvents from './Pages/JournalEvents';
 import AddJournalEvent from './Pages/AddJournalEvent';
