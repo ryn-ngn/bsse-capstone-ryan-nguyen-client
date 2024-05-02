@@ -1,6 +1,9 @@
 @use '../../Styles/mixin.scss' as *;
 .add-car {
   margin: 2rem 1rem;
+  &__heading {
+    @include setPageHeadingStyle;
+  }
   .car-filters {
     display: flex;
     flex-direction: column;
@@ -13,6 +16,10 @@
         .dropdown-toggle {
           width: 100%;
         }
+        .dropdown-menu {
+          max-height: 35rem;
+          overflow-y: scroll;
+        }
       }
     }
 
@@ -21,6 +28,10 @@
       display: flex;
       align-items: center;
       padding-left: 1rem;
+      background-color: rgba(229, 229, 229, 0.5);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      width: 60%;
     }
   }
 

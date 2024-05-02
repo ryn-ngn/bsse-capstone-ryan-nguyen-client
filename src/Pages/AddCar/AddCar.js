@@ -4,8 +4,8 @@ import { headerWithJWT } from '../../Utils/helper';
 import DropDownList from '../../Components/DropDownList/DropDownList';
 import CarInfo from '../../Components/CarInfo/CarInfo';
 import './AddCar.scss';
-
-const REQUEST_URL = `${process.env.REACT_APP_BASE_URL}/cars/filter`;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+const REQUEST_URL = `${BASE_URL}/cars/filter`;
 export default function AddCar() {
   const [makeList, setMakeList] = useState([]);
   const [selectedMake, setSelectedMake] = useState('');
@@ -66,9 +66,23 @@ export default function AddCar() {
     setSelectedYear(value);
   };
 
+  const handleCarAdd = async (data) => {
+    console.log(data);
+    const userId = sessionStorage.getItem('userId');
+    try {
+      const response = axios.post(
+        `${BASE_URL}/userCars/${userId}`,
+        { carId: data },
+        { headers }
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="add-car">
-      <h1>Add a car</h1>
+      <h1 className="add-car__heading">Add a car</h1>
       <div className="car-filters">
         <div className="car-filters__pair">
           <DropDownList
@@ -98,7 +112,13 @@ export default function AddCar() {
         </div>
       </div>
       {searchResults?.map((result) => (
-        <CarInfo carInfo={result} addIconToggle={true} className="add-" />
+        <CarInfo
+          key={result.id}
+          carInfo={result}
+          addIconToggle={true}
+          className="add-"
+          handleIconSelection={handleCarAdd}
+        />
       ))}
     </div>
   );

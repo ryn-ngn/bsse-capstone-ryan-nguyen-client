@@ -6,10 +6,19 @@ export default function CarInfo({
   carInfo,
   deleteIconToggle,
   addIconToggle,
+  handleIconSelection,
 }) {
+  const handleSelection = () => {
+    handleIconSelection(carInfo.id);
+  };
+
   return (
     <>
-      <div className={`${className}car-card`} id={carInfo.id}>
+      <div
+        className={`${className}car-card`}
+        id={carInfo.id}
+        onClick={handleSelection}
+      >
         {deleteIconToggle && (
           <div className={`${className}car-card__img-ctn`}>
             <img
