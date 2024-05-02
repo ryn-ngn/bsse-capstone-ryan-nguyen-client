@@ -82,9 +82,11 @@ export default function Collection() {
         />
       </InputGroup>
 
-      {collection.map((car) => (
-        <CarCard key={car.carId} carId={car.carId} />
-      ))}
+      <div className="card-ctn">
+        {collection.map((car) => (
+          <CarCard key={car.carId} carId={car.carId} />
+        ))}
+      </div>
       <Button
         className="collection__add-btn"
         variant="primary"
@@ -93,6 +95,8 @@ export default function Collection() {
       >
         Add car to collection
       </Button>
+      <div className="background"></div>
+      <div className="overlay"></div>
     </div>
   );
 }

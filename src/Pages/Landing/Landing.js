@@ -47,7 +47,7 @@ export default function Landing() {
 
       setIsLoginError(false);
       setErrorMessage('');
-      navigate(`/collection/${userId}`);
+      navigate(`/collection/${response.data.userId}`);
     } catch (error) {
       setIsLoginError(true);
       setErrorMessage(error.response.data.error.message);
@@ -57,22 +57,24 @@ export default function Landing() {
     setShowForm(true);
   };
   return (
-    <div className="landing d-grid gap-2">
-      <h1 className="landing__heading">Fleet companion</h1>
-      <p className="landing__text">
-        A journal to keep track of your cars' maintenance history, costs, and
-        expenses.
-      </p>
+    <div className="landing ">
       <Gallery />
-      <Button
-        className="landing__start-btn"
-        variant="primary"
-        size="lg"
-        onClick={handleShowForm}
-      >
-        Get Started
-      </Button>
-      {isLoginError && <div>Something went wrong: ${errorMessage}</div>}
+      <div className="non-gallery-ctn d-grid gap-2">
+        <h1 className="landing__heading">Fleet companion</h1>
+        <p className="landing__text">
+          A journal to keep track of your cars' maintenance history, costs, and
+          expenses.
+        </p>
+        <Button
+          className="landing__start-btn"
+          variant="primary"
+          size="lg"
+          onClick={handleShowForm}
+        >
+          Get Started
+        </Button>
+        {isLoginError && <div>Something went wrong: ${errorMessage}</div>}
+      </div>
 
       <UserForm
         setShowForm={setShowForm}

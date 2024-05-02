@@ -3,6 +3,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-bottom: 1rem;
   border-radius: 1.25rem;
+  position: relative;
 
   &__img-ctn {
     border-radius: 1.25rem;
@@ -18,5 +19,18 @@
     border-radius: 1.25rem;
     background-color: white;
     padding: 1rem 2rem;
+  }
+
+  &__delete-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    position: absolute;
+    right: 1rem;
+    bottom: 5rem;
+    color: crimson;
+  }
+
+  @include tablet {
+    width: 45%;
   }
 }

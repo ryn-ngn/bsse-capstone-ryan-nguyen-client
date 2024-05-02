@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { headerWithJWT } from '../../Utils/helper';
 import axios from 'axios';
 import './CarCard.scss';
+import { MdDeleteForever } from 'react-icons/md';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const UNSPLASH_URL = 'https://api.unsplash.com/';
 const unsplashApiKey = 'hDupjXQjBGUgnZB_XlY11zlqiezc0AJ7lE8MR7ETMBk';
@@ -80,6 +82,7 @@ export default function CarCard({ carId }) {
         <p>Model: {carInfo.model}</p>
         <p>Transmission: {carInfo.trany}</p>
       </div>
+      <MdDeleteForever className="car-card__delete-icon" />
     </div>
   );
 }
