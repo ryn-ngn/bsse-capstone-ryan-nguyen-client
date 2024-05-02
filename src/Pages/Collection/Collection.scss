@@ -1,0 +1,45 @@
+@use '../../Styles/mixin.scss' as *;
+
+.collection {
+  padding: 0 1rem;
+  position: relative;
+  &__heading {
+    z-index: 1;
+    @include setPageHeadingStyle;
+  }
+
+  .card-ctn {
+    z-index: 1;
+  }
+
+  .background {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../Assets/images/felix-fuchs-PoPsSRju8Y8-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .overlay {
+    z-index: -1;
+    position: absolute; /* Position the overlay relative to the container */
+    top: 0; /* Align the overlay to the top of the container */
+    left: 0; /* Align the overlay to the left of the container */
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(
+      249,
+      243,
+      243,
+      0.8
+    ); /* Set the overlay color with 50% opacity */
+  }
+  @include tablet {
+    padding: 0 2rem;
+    .card-ctn {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

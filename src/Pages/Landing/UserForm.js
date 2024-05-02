@@ -6,11 +6,11 @@ import RegLogToggle from './RegLogToggle';
 export default function UserForm({
   // isLoggedIn,
   showForm,
-  setShowForm,
   handleSignup,
   handleLogin,
 }) {
   const [userName, setUserName] = useState('');
+
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [isRegister, setIsRegister] = useState(false);

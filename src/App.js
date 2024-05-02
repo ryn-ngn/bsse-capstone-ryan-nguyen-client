@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Landing from './Pages/Landing/Landing';
-import Collection from './Pages/Collection';
+import Collection from './Pages/Collection/Collection';
 import AddCar from './Pages/AddCar';
 import CarInfo from './Pages/CarInfo';
 import JournalEvents from './Pages/JournalEvents';
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Landing />} />
 
         {/* Car Collection */}
-        <Route path="/collection" element={<Collection />} />
+        <Route path="/collection/:userId" element={<Collection />} />
 
         {/* Add Car to Collection */}
         <Route path="/add-car" element={<AddCar />} />
