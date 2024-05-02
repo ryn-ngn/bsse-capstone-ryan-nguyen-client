@@ -1,0 +1,63 @@
+@use '../../Styles/mixin.scss' as *;
+.add-car {
+  margin: 2rem 1rem;
+  &__heading {
+    @include setPageHeadingStyle;
+  }
+  .car-filters {
+    display: flex;
+    flex-direction: column;
+    &__pair {
+      display: flex;
+      flex-direction: row;
+      padding: 0.5rem 0;
+      .dropdown {
+        width: 40%;
+        .dropdown-toggle {
+          width: 100%;
+        }
+        .dropdown-menu {
+          max-height: 35rem;
+          overflow-y: scroll;
+        }
+      }
+    }
+
+    &__selection-txt {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+      background-color: rgba(229, 229, 229, 0.5);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      width: 60%;
+    }
+  }
+
+  .add-car-card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1.25rem;
+    position: relative;
+    margin: 2rem 0;
+    &__info-ctn {
+      border-radius: 1.25rem;
+      background-color: white;
+      padding: 1rem 2rem;
+    }
+
+    &__add-icon {
+      height: 2.5rem;
+      width: 2.5rem;
+      position: absolute;
+      right: 1rem;
+      bottom: 5rem;
+      color: green;
+    }
+  }
+  @include tablet {
+    .add-car-card {
+      width: 45%;
+    }
+  }
+}

@@ -44,6 +44,7 @@ export default function Landing() {
 
       setUserId(response.data.userId);
       sessionStorage.setItem('JWTtoken', response.data.Bearer);
+      sessionStorage.setItem('userId', response.data.userId);
 
       setIsLoginError(false);
       setErrorMessage('');
