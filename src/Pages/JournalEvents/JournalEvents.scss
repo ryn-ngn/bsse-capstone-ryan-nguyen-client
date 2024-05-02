@@ -1,0 +1,15 @@
+@use '../../Styles/mixin.scss' as *;
+
+.journal-events {
+  &__heading {
+    @include setPageHeadingStyle;
+  }
+
+  &__filters {
+    padding: 0 1.5rem;
+    .mb-3 {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

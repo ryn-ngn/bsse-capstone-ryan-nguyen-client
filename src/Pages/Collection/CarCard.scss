@@ -22,12 +22,7 @@
   }
 
   &__delete-icon {
-    height: 2.5rem;
-    width: 2.5rem;
-    position: absolute;
-    right: 1rem;
-    bottom: 5rem;
-    color: crimson;
+    @include setDeleteButtonStyle;
   }
 
   @include tablet {

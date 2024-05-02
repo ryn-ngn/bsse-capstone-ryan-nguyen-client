@@ -7,6 +7,14 @@ const headerWithJWT = () => {
   };
 };
 
+const localDateFormat = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+};
+
 module.exports = {
   headerWithJWT,
+  localDateFormat,
 };

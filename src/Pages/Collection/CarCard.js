@@ -4,6 +4,7 @@ import axios from 'axios';
 import './CarCard.scss';
 import { MdDeleteForever } from 'react-icons/md';
 import CarInfo from '../../Components/CarInfo/CarInfo';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const UNSPLASH_URL = 'https://api.unsplash.com/';
@@ -23,9 +24,10 @@ const unsplashApiKey = 'hDupjXQjBGUgnZB_XlY11zlqiezc0AJ7lE8MR7ETMBk';
 export default function CarCard({ carId }) {
   const [carInfo, setCarInfo] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCollection = async () => {
+    const fetchCarInfo = async () => {
       try {
         const headers = headerWithJWT();
         const response = await axios.get(`${BASE_URL}/cars/${carId}`, {
@@ -39,7 +41,7 @@ export default function CarCard({ carId }) {
       }
     };
 
-    fetchCollection();
+    fetchCarInfo();
   }, []);
 
   //   useEffect(() => {
@@ -65,11 +67,21 @@ export default function CarCard({ carId }) {
   //     }
   //   }, [loading]);
 
+  const handleViewCar = (data) => {
+    const userId = sessionStorage.getItem('userId');
+    navigate(`/journal-events/${userId}/${data}`);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <CarInfo className="collection-" carInfo={carInfo} deleteIconToggle={true} />
+    <CarInfo
+      className="collection-"
+      carInfo={carInfo}
+      deleteIconToggle={true}
+      handleCarSelection={handleViewCar}
+    />
   );
 }

@@ -1,0 +1,27 @@
+@use '../../Styles/mixin.scss' as *;
+
+.event-card {
+  padding: 0 2rem;
+
+  .non-word-info-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sub-heading {
+    margin: 0 -2rem;
+    padding: 0.5rem 3rem;
+    text-transform: capitalize;
+  }
+  &__event-note {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    padding-top: 1rem;
+  }
+  &__delete-btn {
+    @include setDeleteButtonStyle;
+    right: 2.5rem;
+    bottom: 1rem;
+  }
+}

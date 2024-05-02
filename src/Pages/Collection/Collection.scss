@@ -9,6 +9,9 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: rgba(255, 255, 255, 0.9);
+  .nav {
+    z-index: 1;
+  }
   &__heading {
     z-index: 1;
     @include setPageHeadingStyle;

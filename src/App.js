@@ -4,7 +4,7 @@ import Landing from './Pages/Landing/Landing';
 import Collection from './Pages/Collection/Collection';
 import AddCar from './Pages/AddCar/AddCar';
 import CarInfo from './Pages/CarInfo';
-import JournalEvents from './Pages/JournalEvents';
+import JournalEvents from './Pages/JournalEvents/JournalEvents';
 import AddJournalEvent from './Pages/AddJournalEvent';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Route path="/car-info" element={<CarInfo />} />
 
         {/* Service Journal Events */}
-        <Route path="/journal-events" element={<JournalEvents />} />
+        <Route path="/journal-events/:userId/:carId" element={<JournalEvents />} />
 
         {/* Add journal events */}
         <Route path="/add-journal-events" element={<AddJournalEvent />} />
