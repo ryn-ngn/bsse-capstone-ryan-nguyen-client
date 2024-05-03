@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import EventCard from './EventCard';
 import './JournalEvents.scss';
 import AddEventModal from './AddEventModal';
+import OpenAIModal from './OpenAIModal';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const userId = sessionStorage.getItem('userId');
 
@@ -70,11 +71,11 @@ export default function JournalEvents() {
       console.error(err);
     }
   };
+
   return (
     <div className="journal-events d-grid gap-2">
       <NavBar />
       <h1 className="journal-events__heading">Maintenance Events</h1>
-
       <Form className="journal-events__filters">
         <div className="mb-3">
           <Form.Check
@@ -100,7 +101,7 @@ export default function JournalEvents() {
           />
         </div>
       </Form>
-
+      <OpenAIModal carId={carId} />
       {journalEvents.map((event) => (
         <EventCard
           key={event.eventId}
@@ -108,7 +109,6 @@ export default function JournalEvents() {
           handleDeleteCard={handleDeleteCard}
         />
       ))}
-
       <AddEventModal carId={carId} handleAddEvent={handleAddEvent} />
     </div>
   );
