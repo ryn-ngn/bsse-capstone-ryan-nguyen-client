@@ -68,7 +68,6 @@ export default function AddCar() {
   };
 
   const handleCarAdd = async (data) => {
-    console.log(data);
     const userId = sessionStorage.getItem('userId');
     try {
       const response = axios.post(
@@ -76,7 +75,6 @@ export default function AddCar() {
         { carId: data },
         { headers }
       );
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

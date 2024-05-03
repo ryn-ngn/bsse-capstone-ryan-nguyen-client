@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import EventCard from './EventCard';
 import './JournalEvents.scss';
 import AddEventModal from './AddEventModal';
+import OpenAIModal from './OpenAIModal';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const userId = sessionStorage.getItem('userId');
 
@@ -15,6 +16,7 @@ export default function JournalEvents() {
   const [loading, setLoading] = useState(true);
   const headers = headerWithJWT();
   const { carId } = useParams();
+  const [reloadTrigger, setReloadTrigger] = useState(false);
 
   useEffect(() => {
     const fetchJournalEvents = async () => {
@@ -28,22 +30,52 @@ export default function JournalEvents() {
         setJournalEvents(response.data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
     fetchJournalEvents();
-  }, [journalEvents]);
+  }, [reloadTrigger]);
+
+  const handleDeleteCard = async (eventId) => {
+    try {
+      await axios.delete(`${BASE_URL}/journalEvents/${userId}/${carId}/${eventId}`, {
+        headers,
+      });
+      setReloadTrigger((prev) => !prev);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (!journalEvents) {
     return <div>Loading...</div>;
   }
 
+  const handleAddEvent = async (startDate, eventType, eventCost, eventNotes) => {
+    try {
+      const eventObj = {
+        eventDate: startDate,
+        eventType: eventType,
+        eventCost: eventCost,
+        eventNotes: eventNotes,
+      };
+
+      const response = await axios.post(
+        `${BASE_URL}/journalEvents/${userId}/${carId}`,
+        eventObj,
+        { headers }
+      );
+      setReloadTrigger((prev) => !prev);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="journal-events d-grid gap-2">
       <NavBar />
       <h1 className="journal-events__heading">Maintenance Events</h1>
-
       <Form className="journal-events__filters">
         <div className="mb-3">
           <Form.Check
@@ -69,12 +101,15 @@ export default function JournalEvents() {
           />
         </div>
       </Form>
-
+      <OpenAIModal carId={carId} />
       {journalEvents.map((event) => (
-        <EventCard key={event.eventId} event={event} />
+        <EventCard
+          key={event.eventId}
+          journalEvent={event}
+          handleDeleteCard={handleDeleteCard}
+        />
       ))}
-
-      <AddEventModal carId={carId} />
+      <AddEventModal carId={carId} handleAddEvent={handleAddEvent} />
     </div>
   );
 }
