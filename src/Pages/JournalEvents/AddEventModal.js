@@ -11,7 +11,7 @@ import { BsCalendar2Date } from 'react-icons/bs';
 import axios from 'axios';
 import { headerWithJWT } from '../../Utils/helper';
 
-function AddEventModal({ carId }) {
+function AddEventModal({ carId, handleAddEvent }) {
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [eventType, setEventType] = useState('');
@@ -40,32 +40,15 @@ function AddEventModal({ carId }) {
   // add behaviour to the Add entry button
   // button will only be functional if all fields are entered
   useEffect(() => {
-    console.log('date', startDate);
     if ((eventType, startDate, eventCost, eventNotes)) {
       setAddButtonVisible(true);
     } else setAddButtonVisible(false);
   }, [eventType, startDate, eventCost, eventNotes]);
 
-  const handleAddEvent = async () => {
-    try {
-      const eventObj = {
-        eventDate: startDate,
-        eventType: eventType,
-        eventCost: eventCost,
-        eventNotes: eventNotes,
-      };
-
-      const response = await axios.post(
-        `${BASE_URL}/journalEvents/${userId}/${carId}`,
-        eventObj,
-        { headers }
-      );
-      handleClose();
-    } catch (err) {
-      console.error(err);
-    }
+  const handleSubmit = () => {
+    handleAddEvent(startDate, eventType, eventCost, eventNotes);
+    handleClose();
   };
-
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -142,7 +125,7 @@ function AddEventModal({ carId }) {
           <Button
             disabled={!addButtonVisible}
             variant="primary"
-            onClick={handleAddEvent}
+            onClick={handleSubmit}
           >
             Add
           </Button>
