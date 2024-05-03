@@ -63,9 +63,6 @@ export default function Collection() {
     setSearchQuery(event.target.value);
   };
 
-  // function to passdown to CarCard to update each car with other info
-  // those info will be query from BE each time a CarCard is rendered
-
   return (
     <div className="collection  d-grid gap-2">
       <NavBar />
