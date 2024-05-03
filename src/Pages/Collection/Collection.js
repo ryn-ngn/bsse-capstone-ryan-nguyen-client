@@ -10,6 +10,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 import './Collection.scss';
+import NavBar from '../../Components/NavBar/NavBar';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function Collection() {
@@ -45,7 +46,6 @@ export default function Collection() {
           String(value).toLowerCase().includes(searchQuery.toLowerCase())
         );
       });
-      console.log('filtered', filtered);
       setCollection(filtered);
     };
     filterCars();
@@ -68,6 +68,7 @@ export default function Collection() {
 
   return (
     <div className="collection  d-grid gap-2">
+      <NavBar />
       <h1 className="collection__heading">Car Collection</h1>
 
       <InputGroup className="collection__search-box mb-3">
@@ -84,7 +85,7 @@ export default function Collection() {
 
       <div className="card-ctn">
         {collection.map((car) => (
-          <CarCard key={car.carId} carId={car.carId} />
+          <CarCard key={`${car.carId}${Math.random()}`} carId={car.carId} />
         ))}
       </div>
       <Button

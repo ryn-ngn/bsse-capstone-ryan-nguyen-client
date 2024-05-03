@@ -4,6 +4,7 @@ import { headerWithJWT } from '../../Utils/helper';
 import DropDownList from '../../Components/DropDownList/DropDownList';
 import CarInfo from '../../Components/CarInfo/CarInfo';
 import './AddCar.scss';
+import NavBar from '../../Components/NavBar/NavBar';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const REQUEST_URL = `${BASE_URL}/cars/filter`;
 export default function AddCar() {
@@ -82,6 +83,7 @@ export default function AddCar() {
   };
   return (
     <div className="add-car">
+      <NavBar />
       <h1 className="add-car__heading">Add a car</h1>
       <div className="car-filters">
         <div className="car-filters__pair">
