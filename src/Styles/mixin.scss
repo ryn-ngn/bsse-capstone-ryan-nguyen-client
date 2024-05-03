@@ -1,0 +1,32 @@
+// mobile first approach, therefore default styling is for mobile
+// only one additional styling set for tablet
+@use './variables' as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin setChevronStyle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 3rem;
+  color: white;
+}
+
+@mixin setPageHeadingStyle {
+  padding-top: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+@mixin setDeleteButtonStyle($right: 1rem, $bottom: 5rem) {
+  height: 2.5rem;
+  width: 2.5rem;
+  position: absolute;
+  right: $right;
+  bottom: $bottom;
+  color: crimson;
+}

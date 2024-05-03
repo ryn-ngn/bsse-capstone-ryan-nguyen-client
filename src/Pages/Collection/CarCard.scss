@@ -1,0 +1,31 @@
+@use '../../Styles/mixin.scss' as *;
+.collection-car-card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  border-radius: 1.25rem;
+  position: relative;
+
+  &__img-ctn {
+    border-radius: 1.25rem;
+    height: 15rem;
+    border: solid 1px black;
+    img {
+      max-width: 100%;
+      background-color: gray;
+      background-size: cover;
+    }
+  }
+  &__info-ctn {
+    border-radius: 1.25rem;
+    background-color: white;
+    padding: 1rem 2rem;
+  }
+
+  &__delete-icon {
+    @include setDeleteButtonStyle;
+  }
+
+  @include tablet {
+    width: 45%;
+  }
+}
