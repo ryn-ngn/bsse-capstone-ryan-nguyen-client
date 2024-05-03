@@ -6,7 +6,7 @@ import { headerWithJWT } from '../../Utils/helper';
 import { useParams } from 'react-router-dom';
 import EventCard from './EventCard';
 import './JournalEvents.scss';
-import Button from 'react-bootstrap/Button';
+import AddEventModal from './AddEventModal';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const userId = sessionStorage.getItem('userId');
 
@@ -33,7 +33,7 @@ export default function JournalEvents() {
     };
 
     fetchJournalEvents();
-  }, []);
+  }, [journalEvents]);
 
   if (!journalEvents) {
     return <div>Loading...</div>;
@@ -73,9 +73,8 @@ export default function JournalEvents() {
       {journalEvents.map((event) => (
         <EventCard key={event.eventId} event={event} />
       ))}
-      <Button className="journal-events__add-btn" variant="primary" size="lg">
-        Add event
-      </Button>
+
+      <AddEventModal carId={carId} />
     </div>
   );
 }
