@@ -111,15 +111,17 @@ export default function AddCar() {
           <p className="car-filters__selection-txt">{selectedYear}</p>
         </div>
       </div>
-      {searchResults?.map((result) => (
-        <CarInfo
-          key={result.id}
-          carInfo={result}
-          addIconToggle={true}
-          className="add-"
-          handleIconSelection={handleCarAdd}
-        />
-      ))}
+      <div className="car-filters__cards-ctn">
+        {searchResults?.map((result) => (
+          <CarInfo
+            key={result.id}
+            carInfo={result}
+            addIconToggle={true}
+            className="add-"
+            handleAddCar={handleCarAdd}
+          />
+        ))}
+      </div>
     </div>
   );
 }

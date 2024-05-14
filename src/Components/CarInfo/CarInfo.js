@@ -6,21 +6,21 @@ export default function CarInfo({
   carInfo,
   deleteIconToggle,
   addIconToggle,
-  handleIconSelection,
-  handleCarSelection,
+  handleAddCar,
+  handleViewCar,
 }) {
   const handleSelection = () => {
-    handleIconSelection(carInfo.id);
-  };
-
-  const handleSelectedCar = () => {
-    handleCarSelection(carInfo.id);
+    if (deleteIconToggle) {
+      handleViewCar(carInfo.id);
+    } else {
+      handleAddCar(carInfo.id);
+    }
   };
 
   return (
     <>
       <div
-        onClick={handleSelectedCar}
+        onClick={handleSelection}
         className={`${className}car-card`}
         id={carInfo.id}
       >
@@ -40,7 +40,7 @@ export default function CarInfo({
         </div>
         {deleteIconToggle && (
           <MdDeleteForever
-            onClick={handleSelection}
+            // onClick={handleSelection}
             className={`${className}car-card__delete-icon`}
           />
         )}

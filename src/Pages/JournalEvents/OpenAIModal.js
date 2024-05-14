@@ -32,8 +32,8 @@ function OpenAIModal({ carId }) {
           `${BASE_URL}/askOpenAI/${carInfo.make}/${carInfo.model}/${carInfo.year}`,
           { headers }
         );
-        setAIResponse(JSON.parse(response.data));
-        console.log(JSON.parse(response.data).recommendations);
+        setAIResponse(response.data.recommendations);
+        console.log(aiResponse);
       } catch (error) {
         console.error(error);
       }

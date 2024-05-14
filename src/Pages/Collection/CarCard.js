@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { headerWithJWT } from '../../Utils/helper';
 import axios from 'axios';
 import './CarCard.scss';
-import { MdDeleteForever } from 'react-icons/md';
 import CarInfo from '../../Components/CarInfo/CarInfo';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,28 +43,29 @@ export default function CarCard({ carId }) {
     fetchCarInfo();
   }, []);
 
-  //   useEffect(() => {
-  //     const fetchUnSplashImg = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           `${UNSPLASH_URL}/search/photos?query='${carInfo.make} ${carInfo.model}'&per_page=1&page=1&orientation=landscape&client_id=${unsplashApiKey}`
-  //         );
+  // API usage is limited, had to commented out to limit usage
+  // useEffect(() => {
+  //   const fetchUnSplashImg = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${UNSPLASH_URL}/search/photos?query='${carInfo.make} ${carInfo.model}'&per_page=1&page=1&orientation=landscape&client_id=${unsplashApiKey}`
+  //       );
 
-  //         const regUrl = response.data.results[0].urls.regular;
-  //         console.log('imgUrl', regUrl);
-  //         setCarInfo((prevState) => ({
-  //           ...prevState,
-  //           imageUrl: regUrl,
-  //         }));
-  //       } catch (error) {
-  //         console.error('Error fetching car image:', error);
-  //         setLoading(false);
-  //       }
-  //     };
-  //     if (!loading) {
-  //       fetchUnSplashImg();
+  //       const regUrl = response.data.results[0].urls.regular;
+  //       console.log('imgUrl', regUrl);
+  //       setCarInfo((prevState) => ({
+  //         ...prevState,
+  //         imageUrl: regUrl,
+  //       }));
+  //     } catch (error) {
+  //       console.error('Error fetching car image:', error);
+  //       setLoading(false);
   //     }
-  //   }, [loading]);
+  //   };
+  //   if (!loading) {
+  //     fetchUnSplashImg();
+  //   }
+  // }, [loading]);
 
   const handleViewCar = (data) => {
     const userId = sessionStorage.getItem('userId');
@@ -81,7 +81,7 @@ export default function CarCard({ carId }) {
       className="collection-"
       carInfo={carInfo}
       deleteIconToggle={true}
-      handleCarSelection={handleViewCar}
+      handleViewCar={handleViewCar}
     />
   );
 }
