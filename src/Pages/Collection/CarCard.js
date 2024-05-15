@@ -20,7 +20,7 @@ const unsplashApiKey = 'hDupjXQjBGUgnZB_XlY11zlqiezc0AJ7lE8MR7ETMBk';
 //     "vclass": "Minicompact Cars",
 //     "year": "2017"
 // }
-export default function CarCard({ carId }) {
+export default function CarCard({ carId, hideCarImg }) {
   const [carInfo, setCarInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ export default function CarCard({ carId }) {
         setLoading(false);
       }
     };
-    if (!loading) {
+    if (!loading & !hideCarImg) {
       fetchUnSplashImg();
     }
   }, [loading]);

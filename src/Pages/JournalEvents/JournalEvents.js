@@ -8,6 +8,7 @@ import EventCard from './EventCard';
 import './JournalEvents.scss';
 import AddEventModal from './AddEventModal';
 import OpenAIModal from './OpenAIModal';
+import CarCard from '../Collection/CarCard';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const userId = sessionStorage.getItem('userId');
 
@@ -76,6 +77,7 @@ export default function JournalEvents() {
     <div className="journal-events d-grid gap-2">
       <NavBar />
       <h1 className="journal-events__heading">Maintenance Events</h1>
+      <CarCard carId={carId} hideCarImg={true} />
       <Form className="journal-events__filters">
         <div className="mb-3">
           <Form.Check

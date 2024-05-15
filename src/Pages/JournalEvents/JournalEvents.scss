@@ -19,6 +19,19 @@
     margin: 0 1rem;
     background-color: white;
   }
+  .collection-car-card {
+    z-index: 1;
+    margin: 0 1rem;
+    &__img-ctn {
+      display: none;
+    }
+    &__info-ctn {
+      border-radius: 20px;
+    }
+    svg {
+      display: none;
+    }
+  }
 
   &__filters {
     z-index: 1;
