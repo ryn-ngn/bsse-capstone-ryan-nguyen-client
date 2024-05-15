@@ -44,28 +44,28 @@ export default function CarCard({ carId }) {
   }, []);
 
   // API usage is limited, had to commented out to limit usage
-  // useEffect(() => {
-  //   const fetchUnSplashImg = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `${UNSPLASH_URL}/search/photos?query='${carInfo.make} ${carInfo.model}'&per_page=1&page=1&orientation=landscape&client_id=${unsplashApiKey}`
-  //       );
+  useEffect(() => {
+    const fetchUnSplashImg = async () => {
+      try {
+        const response = await axios.get(
+          `${UNSPLASH_URL}/search/photos?query='${carInfo.make} ${carInfo.model}'&per_page=1&page=1&orientation=landscape&client_id=${unsplashApiKey}`
+        );
 
-  //       const regUrl = response.data.results[0].urls.regular;
-  //       console.log('imgUrl', regUrl);
-  //       setCarInfo((prevState) => ({
-  //         ...prevState,
-  //         imageUrl: regUrl,
-  //       }));
-  //     } catch (error) {
-  //       console.error('Error fetching car image:', error);
-  //       setLoading(false);
-  //     }
-  //   };
-  //   if (!loading) {
-  //     fetchUnSplashImg();
-  //   }
-  // }, [loading]);
+        const regUrl = response.data.results[0].urls.regular;
+        console.log('imgUrl', regUrl);
+        setCarInfo((prevState) => ({
+          ...prevState,
+          imageUrl: regUrl,
+        }));
+      } catch (error) {
+        console.error('Error fetching car image:', error);
+        setLoading(false);
+      }
+    };
+    if (!loading) {
+      fetchUnSplashImg();
+    }
+  }, [loading]);
 
   const handleViewCar = (data) => {
     const userId = sessionStorage.getItem('userId');

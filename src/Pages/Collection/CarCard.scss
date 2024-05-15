@@ -6,9 +6,10 @@
   position: relative;
 
   &__img-ctn {
-    border-radius: 1.25rem;
     height: 15rem;
-    border: solid 1px black;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     img {
       max-width: 100%;
       background-color: gray;
@@ -16,7 +17,8 @@
     }
   }
   &__info-ctn {
-    border-radius: 1.25rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     background-color: white;
     padding: 1rem 2rem;
   }
