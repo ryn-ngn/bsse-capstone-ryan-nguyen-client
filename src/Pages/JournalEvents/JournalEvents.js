@@ -110,6 +110,7 @@ export default function JournalEvents() {
         />
       ))}
       <AddEventModal carId={carId} handleAddEvent={handleAddEvent} />
+      <div className="overlay"></div>
     </div>
   );
 }

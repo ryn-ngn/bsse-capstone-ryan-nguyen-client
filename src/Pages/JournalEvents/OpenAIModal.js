@@ -32,35 +32,48 @@ function OpenAIModal({ carId }) {
           `${BASE_URL}/askOpenAI/${carInfo.make}/${carInfo.model}/${carInfo.year}`,
           { headers }
         );
-        setAIResponse(response.data.recommendations);
-        console.log(aiResponse);
+        setAIResponse(response.data);
       } catch (error) {
         console.error(error);
       }
     };
-    if (carInfo && !aiResponse) fetchAIrespond();
-  }, [carInfo, aiResponse]);
+    if (carInfo) {
+      fetchAIrespond();
+      console.log(aiResponse);
+    }
+  }, [carInfo]);
 
-  if (!carInfo || !aiResponse) {
-    return <div>Loading...</div>;
-  }
   return (
     <>
-      <Button variant="outline-secondary" onClick={handleShow}>
-        AI Car Maintenance Suggestion
+      <Button
+        className="ask-ai-btn"
+        variant="outline-secondary"
+        onClick={handleShow}
+      >
+        Parts & Info Recommended by AI
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Powered by OpenAI</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{`${aiResponse.recommendations}`}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {aiResponse && (
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Powered by OpenAI</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>{`Wheel size: ${aiResponse.wheel_size}`}</p>
+            <p>{`Bolt pattern: ${aiResponse.bolt_pattern}`}</p>
+            <p>{`Wheel's center bore: ${aiResponse.center_bore}`}</p>
+            <p>{`Standard tire size: ${aiResponse.tire_size}`}</p>
+            <p>{`Left wiper blade size: ${aiResponse.left_wipe_blade}`}</p>
+            <p>{`Right wiper blade size: ${aiResponse.right_wiper_blade}`}</p>
+            <p>{`Oil type: ${aiResponse.oil_type}`}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </>
   );
 }

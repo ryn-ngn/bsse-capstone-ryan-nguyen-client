@@ -1,15 +1,41 @@
 @use '../../Styles/mixin.scss' as *;
 
 .journal-events {
+  background-image: url('../../Assets/images/Designer\ \(1\).png');
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgba(255, 255, 255, 0.9);
+  .nav-tabs {
+    z-index: 1;
+  }
   &__heading {
+    z-index: 1;
     @include setPageHeadingStyle;
   }
 
+  .ask-ai-btn {
+    margin: 0 1rem;
+    background-color: white;
+  }
+
   &__filters {
+    z-index: 1;
     padding: 0 1.5rem;
     .mb-3 {
       display: flex;
       justify-content: space-between;
     }
+  }
+  .event-card {
+    z-index: 1;
+    margin: 0 1rem;
+  }
+  .btn {
+    z-index: 1;
+  }
+  .overlay {
+    @include serOverlayStyle;
   }
 }

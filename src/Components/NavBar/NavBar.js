@@ -22,10 +22,6 @@ function NavBar() {
         Collection
       </Nav.Link>
 
-      <Nav.Link eventKey="journal-events" href="/journal-events">
-        Journal Events
-      </Nav.Link>
-
       <Nav.Link eventKey="log-out" href="/">
         Log Out
       </Nav.Link>
